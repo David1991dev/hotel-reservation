@@ -15,16 +15,15 @@ public class Controller {
 
     @Autowired
     private Service hotelService;
-
     @Autowired
-    private RoomRepository roomrepo;
+    private RoomRepository roomRepo;
 
 
 
-//    @RequestMapping(value = "/examplehotel", method = RequestMethod.GET)
-//    public Hotel fetchHotelExample(){
-//        return hotelService.fetchExampleHotel();
-//    }
+    @RequestMapping(value = "/examplehotel", method = RequestMethod.GET)
+    public List<Hotel> fetchHotelExample(){
+        return hotelService.fetchExampleHotels();
+    }
 
     @RequestMapping(value = "/hotel", method = RequestMethod.GET)
     public List<Room> fetchHotelFilter(
@@ -33,17 +32,6 @@ public class Controller {
                 String roomType = (requestParams.get("roomtype"));
         return hotelService.fetchHotelFilter(price,roomType);
     }
-
-
-
-
-
-    @RequestMapping("/hello")
-    public String index(){
-        return "Hello";
-    }
-    
-
     
     
 }

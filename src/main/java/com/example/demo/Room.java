@@ -16,6 +16,8 @@ public class Room {
     @JoinColumn(name ="hotel_id")
     private Hotel hotel;
 
+    public Room() {
+    }
 
     public Room(String roomType, Integer price, Hotel hotel) {
         this.roomType = roomType;

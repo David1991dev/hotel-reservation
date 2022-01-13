@@ -1,11 +1,17 @@
 package com.example.demo;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
+import java.util.List;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Hotel {
 
@@ -13,33 +19,14 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String name;
-    @ManyToOne
-    @JoinColumn(name= "room_id")
-    private Room room;
+    @OneToMany(mappedBy = "hotel")
+    private List<Room> roomList;
+
 
     public Hotel(String name) {
         this.name = name;
     }
 
-    public Hotel(String name, Room room) {
-        this.name = name;
-        this.room = room;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 }
 

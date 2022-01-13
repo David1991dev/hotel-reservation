@@ -12,4 +12,8 @@ public class ExampleHotel {
             new Hotel("Ramada Hotel")
     );
 
+    public static List<Hotel> getHotels() {
+        return HOTELS;
+    }
+
 }

@@ -7,6 +7,7 @@ public class Mapping {
     private Person person;
 
     public Mapping(Hotel hotel, Room room, Person person) {
+
         this.hotel = hotel;
         this.room = room;
         this.person = person;

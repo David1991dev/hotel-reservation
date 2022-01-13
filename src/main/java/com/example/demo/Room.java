@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,6 +12,16 @@ public class Room {
     private long id;
     private String roomType;
     private Integer price;
+    @ManyToOne
+    @JoinColumn(name ="hotel_id")
+    private Hotel hotel;
+
+
+    public Room(String roomType, Integer price, Hotel hotel) {
+        this.roomType = roomType;
+        this.price = price;
+        this.hotel = hotel;
+    }
 
     public Room(String roomType, Integer price) {
         this.roomType = roomType;
@@ -43,6 +50,14 @@ public class Room {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     @Override

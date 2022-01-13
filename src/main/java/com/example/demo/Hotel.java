@@ -3,10 +3,7 @@ package com.example.demo;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -16,17 +13,17 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name= "room_id")
+    private Room room;
 
-    public Hotel( String name) {
+    public Hotel(String name) {
         this.name = name;
     }
 
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
+    public Hotel(String name, Room room) {
+        this.name = name;
+        this.room = room;
     }
 
     public String getName() {
@@ -36,4 +33,13 @@ public class Hotel {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }
+

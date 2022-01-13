@@ -8,6 +8,8 @@ public class ExapmleRoom {
     private static final List<Room> ROOMS = Arrays.asList(
         new Room("SingleRoom",1500),
         new Room("SingleRoom",1800),
+        new Room("SingleRoom",1700),
+        new Room("SingleRoom",1600),
         new Room("Doubleroom",500),
         new Room("Doubleroom",2500)
     );

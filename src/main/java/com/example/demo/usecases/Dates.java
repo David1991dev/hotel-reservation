@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.usecases;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

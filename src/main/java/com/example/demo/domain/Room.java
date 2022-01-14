@@ -1,10 +1,16 @@
-package com.example.demo;
+package com.example.demo.domain;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
 public class Room {
 
     @Id
@@ -12,12 +18,14 @@ public class Room {
     private long id;
     private String roomType;
     private Integer price;
-    @ManyToOne
+    private LocalDate availableFrom;
+    private LocalDate availableUntil;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="hotel_id")
+//    @JsonBackReference
     private Hotel hotel;
 
-    public Room() {
-    }
+
 
     public Room(String roomType, Integer price, Hotel hotel) {
         this.roomType = roomType;
@@ -28,38 +36,8 @@ public class Room {
     public Room(String roomType, Integer price) {
         this.roomType = roomType;
         this.price = price;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+        this.availableFrom = LocalDate.parse("2021-01-01");
+        this.availableUntil = LocalDate.parse("2021-12-30");
     }
 
     @Override

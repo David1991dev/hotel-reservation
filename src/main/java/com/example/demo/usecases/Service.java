@@ -1,8 +1,11 @@
-package com.example.demo;
+package com.example.demo.usecases;
 
+import com.example.demo.domain.Hotel;
+import com.example.demo.domain.HotelRepository;
+import com.example.demo.domain.Room;
+import com.example.demo.domain.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +16,6 @@ public class Service {
 
     RoomRepository roomRepository;
     HotelRepository hotelRepository;
-
-
 
     @Autowired
     public void setHotelRepository(HotelRepository hotelRepository) {
@@ -27,11 +28,11 @@ public class Service {
     }
 
 
-    public List<Hotel> fetchExampleHotels() {
-        List<Hotel> listOfHotels = new ArrayList<>();
-        hotelRepository.findAll().forEach(hotel -> {System.out.println(hotel);listOfHotels.add(hotel);});
-        return listOfHotels;
+    public List<Hotel> fetchHotels() {
+        return hotelRepository
+                .findAll();
     }
+
 
     public List<Room> fetchHotelFilter(Integer price, String roomType) {
         return roomRepository

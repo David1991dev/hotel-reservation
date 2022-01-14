@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.domain;
 
 
 import java.util.Arrays;
@@ -11,5 +11,8 @@ public class ExamplePerson {
             new Person("Laura"),
             new Person("Adrienn")
     );
+
+    public static List<Person> getPersons (){return PERSONS;
+    }
 
 }

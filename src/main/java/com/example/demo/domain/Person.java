@@ -1,12 +1,17 @@
-package com.example.demo;
+package com.example.demo.domain;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
-import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Person {
 
@@ -21,13 +26,6 @@ public class Person {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
 }

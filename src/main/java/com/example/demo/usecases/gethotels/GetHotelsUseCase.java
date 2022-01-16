@@ -20,17 +20,17 @@ public class GetHotelsUseCase {
     public GetHotelsResponse execute() {
         Map<String, List<Long>> hotelList = new HashMap<>();
         hotelRepository
-                .findAll()
-                .forEach(hotel -> {
-                            hotelList
-                                    .put(hotel.getName(), hotel.getRoomList()
-                                            .stream()
-                                            .map(Room::getId)
-                                            .collect(Collectors.toList()));
-                        }
-                );
-        return GetHotelsResponse.builder().hotels(hotelList).build();
+            .findAll()
+            .forEach(hotel -> {
+                hotelList
+                    .put(hotel.getName(), hotel.getRoomList()
+                    .stream()
+                    .map(Room::getId)
+                    .collect(Collectors.toList()));
+            });
 
+//        return  new GetHotelsResponse(hotelList); is equal to
+        return GetHotelsResponse.builder().hotels(hotelList).build();
     }
 
 }

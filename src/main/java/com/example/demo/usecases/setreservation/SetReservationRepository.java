@@ -9,10 +9,13 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class SetReservationRepository {
 
 

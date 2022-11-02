@@ -10,27 +10,24 @@ import java.util.Optional;
 @Component
 public class SetReservationUseCase {
 
-    @Autowired
-    SetReservationRepository setReservationRepository;
-    @Autowired
-    RoomRepository roomRepository;
-    @Autowired
-    PersonRepository personRepository;
-    @Autowired
-    ReservationRepository reservationRepository
+	@Autowired
+	SetReservationRepository setReservationRepository;
+	@Autowired
+	RoomRepository roomRepository;
+	@Autowired
+	PersonRepository personRepository;
+	@Autowired
+	ReservationRepository reservationRepository;
 
-
-
-
-    public void execute(long roomId, Long personId, String checkIn, String checkOut){
-        Room room = roomRepository.findById(roomId).orElse(new Room());
-        Person person = personRepository.findById(personId).orElse(new Person());
-        Reservation newReservation = new Reservation();
-        newReservation.setRoom(room);
-        newReservation.setPerson(person);
-        newReservation.setArrival( LocalDate.parse(checkIn));
-        newReservation.setArrival( LocalDate.parse(checkOut));
-        reservationRepository.save( newReservation);
-    }
+	public void execute(long roomId, Long personId, String checkIn, String checkOut) {
+		Room room = roomRepository.findById(roomId).orElse(new Room());
+		Person person = personRepository.findById(personId).orElse(new Person());
+		Reservation newReservation = new Reservation();
+		newReservation.setRoom(room);
+		newReservation.setPerson(person);
+		newReservation.setArrival(LocalDate.parse(checkIn));
+		newReservation.setArrival(LocalDate.parse(checkOut));
+		reservationRepository.save(newReservation);
+	}
 
 }
